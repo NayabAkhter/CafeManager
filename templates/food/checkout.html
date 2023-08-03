@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row my-5">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                {% if message %}
+                {% for message in messages %}
+                    <p class={{message.tags}}>{{message}}</p>
+                {% endfor %}
+        {% endif %} 
+        <form action="{% url 'place_order' %}" method="post">
+            {% csrf_token %}           
+            <div class="mb-1">
+                <label for="otp">Please check your registered email</label>
+                <input class="form-control" type="text" name="otp" id="otp" placeholder="OTP" required>
+            </div>
+            <input type="submit" value="verify" class="btn btn-primary w-100">
+        </form>    
+            </div>
+        </div>
+    </div>
+</div>
+           
+
+{% endblock content %}

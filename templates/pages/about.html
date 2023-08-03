@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Cafe</title>
+</head>
+<body>
+    <a href="{% url 'home'%}">Home</a>
+    <a href="{% url 'about us'%}">About</a>
+
+    <h1>About Us</h1>
+    {{ a }}
+    {{ b }}
+    {% if a > 0 %}
+    <p>Positive</p>
+    {% elif a < 0 %}
+    <p>negative</p>
+    {% else %}
+    <p>zero</p>
+    {% endif %}
+    {{ food }}
+    <ul>
+    {% for food in food %}
+        <li>{{ food }}</li>
+    {% endfor %}    
+    </ul>
+    <table border="1" width="25%">
+        <tr>
+            <th>Name</th>
+            <th>Marks</th>
+            <th>Status</th>
+        </tr>
+        {% for name,mark in students.items %}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{mark}}</td>
+                <td>
+                    {% if mark >= 50 %}
+                        pass
+                    {% else %}
+                        fail
+                    {% endif %}        
+                </td>
+            </tr>    
+        {%  endfor %} 
+    </table>
+</body>
+
+{% endblock content %}
+</html>

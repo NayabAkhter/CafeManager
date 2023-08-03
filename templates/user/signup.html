@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Sign Up</h3>
+                </div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                              <p class={{message.tags}}>{{message}}</p>
+
+                        {% endfor %}
+
+                    {% endif %}
+                    <form action="{% url 'signup' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mb-1">
+                            <label for="first_name">First Name</label>
+                            <input class="form-control" type="text" name="first_name" id="first_name">
+                        </div>
+                        <div class="mb-1">
+                            <label for="last_name">Last Name</label>
+                            <input class="form-control" type="text" name="last_name" id="last_name">
+                        </div>
+                        <div class="mb-1">
+                            <label for="username">SIC Number</label>
+                            <input class="form-control" type="text" name="username" id="username">
+                        </div>
+                        <div class="mb-1">
+                            <label for="email">Email</label>
+                            <input class="form-control" type="email" name="email" id="email">
+                        </div>
+                        <div class="mb-1">
+                            <label for="password">Password</label>
+                            <input class="form-control" type="password" name="password" id="password">
+                        </div>
+                        <div class="mb-1">
+                            <label for="password2">Confirm Password</label>
+                            <input class="form-control" type="password" name="password2" id="password2">
+                        </div>
+                        <input type="submit" value="Sign Up" class="btn btn-primary w-100 my-2">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
